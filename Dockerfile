@@ -14,11 +14,12 @@ RUN apt-get update && \
     php -v
 
 RUN apt install -y php-cli php-common php-curl php-mbstring php-gd php-mysql php-soap php-xml php-imap php-intl php-json php-zip php-bcmath
-# suitecrm setup
-COPY ./suitecrm /var/www/html/suitecrm
-# COPY ./config.conf /etc/apache2/sites-available/suitecrm.conf
-WORKDIR /var/www/html/suitecrm
 
+# suitecrm setup
+# COPY ./config.conf /etc/apache2/sites-available/suitecrm.conf
+WORKDIR /var/www/html
+
+COPY ./suitecrm ./suitecrm
 # RUN chown -R www-data:www-data /var/www/html/suitecrm
 RUN chown -R www-data:www-data . && \
     chmod -R 755 . && \
